@@ -25,3 +25,9 @@
 12. **GitHub URL:** `https://github.com/Jason-Wang313/29_gripper_dependent_object_identity`
 
 13. **Visible Desktop PDF copy status:** pending orchestrator copy
+
+## Orchestrator Desktop Copy
+
+Checked: 2026-06-11 22:26:05 +01:00
+Downloads PDF: C:/Users/wangz/Downloads/29.pdf
+Result: copy script exit 0 log C:\Users\wangz\robotics_60_paper_batch\logs\desktop_copy_29_20260611_222600.log

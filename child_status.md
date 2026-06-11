@@ -46,3 +46,7 @@ Recovery steps:
 - Used Crossref-derived 1000-paper sweep and marked limits honestly.
 - Built paper around formal finite-partition claim plus synthetic evidence.
 - Pushed complete runnable repo.
+
+Exit code: 0
+End time: 2026-06-11 22:26:00 +01:00
+PDF exists: True
