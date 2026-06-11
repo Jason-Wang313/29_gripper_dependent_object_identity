@@ -1,0 +1,221 @@
+\documentclass{article}
+
+\usepackage{iclr2026_conference,times}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{microtype}
+
+\title{When the Same Object Is Not the Same: Interface-Conditioned Identity for Robot Manipulation}
+
+\author{Anonymous Authors}
+
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Robot manipulation papers usually treat object identity as a property of the object, then ask a gripper, sensor, or active policy to estimate that fixed label.
+This abstraction becomes brittle when the gripper is part of the observation process: a pinch gripper may reveal stiffness and friction, a suction cup may reveal porosity and seal quality, and an enveloping hand may reveal size and compliance while collapsing distinctions that matter elsewhere.
+We argue that manipulation perception should represent object identity as an interface-conditioned partition of latent object states.
+For a gripper-action interface, two states have the same identity when the interface cannot distinguish them and no task-relevant controller needs to.
+We formalize this as an Interface-Conditioned Identity Partition (ICIP), prove a finite partition impossibility result showing when no single gripper-agnostic identity can be both observable and sufficient, and provide a small reproducible manipulation-perception experiment.
+In the experiment, global object IDs are sufficient but not observable from a single gripper channel; common gripper-agnostic labels are observable but not sufficient for control; ICIP recovers the observable and task-sufficient distinctions.
+The contribution is not a larger model or a new benchmark, but a change in the central representational variable for contact-rich manipulation.
+\end{abstract}
+
+\section{Introduction}
+
+Object recognition is often written as if the world provides object labels and the robot merely estimates them.
+That picture is useful for static vision, but contact-rich manipulation makes the robot interface part of the measurement apparatus.
+A parallel jaw gripper, a suction cup, and a soft enveloping hand do not just execute different grasps; they create different observables.
+They collapse and separate different latent object states.
+If the label space is held fixed while the observation channel changes, a learner may be asked to infer distinctions that are physically unavailable to its gripper, or a planner may consume labels that omit distinctions its gripper needs.
+
+This paper asks a narrow question: when should an object identity label be indexed by the gripper-action interface that produces the observations?
+The answer matters for tactile recognition, active perception, affordance learning, object-centric world models, and robot foundation models that hope to move representations across hands and tools.
+The dominant assumption in much prior work is that action helps reveal a fixed object identity \citep{bajcsy1988active,bohg2017interactive,pajarinen2019active}, or that touch is another modality for estimating object or property labels \citep{calandra2018more,yuan2017gelsight,chitta2010tactile}.
+Those views are not wrong.
+The missing case is the one where changing the gripper changes the identity relation that is observable and useful.
+
+We propose Interface-Conditioned Identity Partitions (ICIP).
+For an interface $g$--a gripper plus a family of probing or manipulation actions--ICIP is the quotient of latent object states that are observationally indistinguishable and task-equivalent under $g$.
+This is a deliberately modest claim.
+We do not deny that a complete latent physical state may exist.
+We claim that a deployed robot often cannot and need not identify that state.
+The useful identity abstraction is the coarsest one that still supports the manipulation decisions available to the current interface.
+
+Our contributions are:
+\begin{enumerate}
+    \item A formal statement of gripper-dependent identity as a partition-lattice problem over latent object states.
+    \item A finite impossibility result: when two interfaces induce non-identical minimal observable-sufficient partitions, no single identity partition can be minimal for both; under stronger non-nesting, any universal compromise is either unobservable or insufficient for at least one interface.
+    \item A reproducible synthetic manipulation-perception environment with pinch, suction, and enveloping grippers that separates three abstractions: global object ID, common gripper-agnostic label, and ICIP.
+    \item A broad literature audit over 1000 Crossref records, with 300 serious-skim entries, 225 deep-read metadata/abstract entries, and 100 hostile prior-work entries. The audit is released with this submission and explicitly marks its metadata-level limitations.
+\end{enumerate}
+
+\section{Related Work}
+
+\textbf{Interactive and active perception.}
+Active perception has long treated action as a way to improve state estimation \citep{bajcsy1988active}.
+Interactive perception in robotics makes the coupling between action and perception explicit, especially when manipulation reveals shape, pose, articulation, or hidden structure \citep{katz2011interactive,bohg2017interactive,hausman2015active,pajarinen2019active}.
+This line is closest to our work because it rejects passive sensing.
+However, it usually preserves a fixed target variable: the robot chooses actions to reveal an object, pose, property, or model.
+ICIP instead asks whether the target identity relation itself should change once the action/gripper channel is specified.
+
+\textbf{Tactile and visuotactile object recognition.}
+Tactile sensing has been used for object recognition, material inference, grasp correction, pose estimation, and regrasping \citep{chitta2010tactile,calandra2018more,yuan2017gelsight,lee2019making}.
+Recent visuotactile and in-hand systems increasingly treat contact as a central signal rather than an auxiliary cue.
+The hostile prior-work set includes recent papers on slip-aware in-hand manipulation, shared visuotactile pose estimation, and tactile object recognition.
+These works make tactile recognition less novel; they do not by themselves define the label space as a quotient induced by a gripper-action interface.
+
+\textbf{Grasping, grippers, and affordances.}
+Data-driven grasp synthesis and grasp-quality prediction have produced strong object-to-action mappings \citep{bohg2014data,mahler2017dexnet,pinto2016supersizing}.
+Gripper design papers make the morphology of the hand central to what can be grasped, sensed, or controlled \citep{ruth2021,slipaware2025,softgripper2026}.
+Affordance learning binds objects and actions \citep{gibson1979ecological,do2018affordancenet}.
+ICIP is adjacent but different: affordances describe what actions are possible, while ICIP describes which object distinctions are observable and sufficient for a given interface.
+
+\textbf{Object-centric robot representations.}
+Object-centric world models and manipulation representations seek reusable variables for planning and policy learning \citep{greff2020binding,veerapaneni2020entity}.
+The pressure in that literature often favors invariance: learn object variables that transfer across views, tasks, and embodiments.
+ICIP marks a boundary condition for that ambition.
+Invariance across grippers can be harmful when the relevant partitions are non-nested: one interface collapses distinctions another must preserve.
+
+\section{Interface-Conditioned Identity}
+
+Let $S$ be a finite set of latent object states.
+An interface $g$ is a gripper together with a family of actions and sensors.
+It induces an observation kernel $O_g(y \mid s)$ and a task equivalence relation over states.
+We write partitions with the refinement order $\mathcal{A} \preceq \mathcal{B}$ when every block of $\mathcal{A}$ is contained in a block of $\mathcal{B}$.
+Thus $\mathcal{A}$ is finer than $\mathcal{B}$.
+
+\begin{definition}[Observation partition]
+The observation partition $\mathcal{O}_g$ groups states $s,s' \in S$ when $O_g(\cdot \mid s)=O_g(\cdot \mid s')$.
+No identity label observable through $g$ can split a block of $\mathcal{O}_g$.
+\end{definition}
+
+\begin{definition}[Task partition]
+The task partition $\mathcal{T}_g$ groups states that require the same manipulation decision under interface $g$.
+An identity partition is sufficient for $g$ only if it does not merge states from different blocks of $\mathcal{T}_g$.
+\end{definition}
+
+An identity partition $\mathcal{I}$ is observable for $g$ if $\mathcal{O}_g \preceq \mathcal{I}$.
+It is sufficient for $g$ if $\mathcal{I} \preceq \mathcal{T}_g$.
+Hence an observable and sufficient identity for $g$ must satisfy
+\begin{equation}
+    \mathcal{O}_g \preceq \mathcal{I} \preceq \mathcal{T}_g .
+\end{equation}
+When $\mathcal{O}_g \preceq \mathcal{T}_g$, a natural minimal interface-conditioned identity is $\mathcal{I}_g=\mathcal{O}_g$ if the observation partition is already task-sufficient, or the coarsest observable partition that still refines $\mathcal{T}_g$ when redundant observations exist.
+
+\begin{definition}[ICIP]
+An Interface-Conditioned Identity Partition for interface $g$ is a partition $\mathcal{I}_g$ that is observable through $g$, sufficient for $g$'s task partition, and minimal among partitions satisfying both constraints.
+\end{definition}
+
+\begin{proposition}[No universal minimal identity under distinct ICIPs]
+Let $g$ and $h$ be two interfaces with unique minimal observable-sufficient partitions $\mathcal{I}_g$ and $\mathcal{I}_h$.
+If $\mathcal{I}_g \neq \mathcal{I}_h$, no single partition $\mathcal{I}$ is the unique minimal observable-sufficient identity for both interfaces.
+If, additionally, $\mathcal{I}_g$ and $\mathcal{I}_h$ are non-comparable under refinement and each equals its interface's required task partition, then any single compromise partition is either unobservable or insufficient for at least one of the two interfaces.
+\end{proposition}
+
+\textit{Proof sketch.}
+If $\mathcal{I}$ were the unique minimal observable-sufficient identity for both, uniqueness gives $\mathcal{I}=\mathcal{I}_g$ and $\mathcal{I}=\mathcal{I}_h$, contradicting $\mathcal{I}_g \neq \mathcal{I}_h$.
+For the stronger statement, consider any partition $\mathcal{I}$.
+To be observable and sufficient for $g$ when $\mathcal{O}_g=\mathcal{T}_g=\mathcal{I}_g$, it must satisfy $\mathcal{I}_g \preceq \mathcal{I} \preceq \mathcal{I}_g$, hence $\mathcal{I}=\mathcal{I}_g$.
+The same argument for $h$ requires $\mathcal{I}=\mathcal{I}_h$.
+Non-comparability rules out a shared equality, so at least one observability or sufficiency constraint fails.
+\hfill $\square$
+
+\section{Synthetic Manipulation-Perception Evidence}
+
+We instantiate the partition conflict in a finite toy world designed to be easy to audit.
+There are 96 latent objects with attributes size, shape, stiffness, porosity, friction, and mass.
+Three interfaces observe different subsets:
+pinch observes size, shape, stiffness, friction, and mass;
+suction observes size, shape, porosity, and mass;
+enveloping observes size, shape, and stiffness.
+Each gripper has an optimal controller that depends only on its observable task-relevant attributes.
+
+We compare three identity targets.
+Global ID is the full six-attribute object label.
+Common label is the gripper-agnostic visual label containing only size and shape.
+ICIP is the gripper-specific quotient over the attributes observed and needed by that interface.
+For each gripper and identity target, a nearest-centroid classifier is trained on noisy observations.
+We then measure label accuracy, action success after mapping predicted labels to majority optimal controllers, and the Bayes upper bound for global ID under the gripper's observation partition.
+
+\begin{table}[t]
+\centering
+\caption{Synthetic evidence. Global IDs are task-sufficient but not observable from a single gripper channel; common gripper-agnostic labels are observable but lose control distinctions; ICIP is both observable and sufficient in this constructed world. Global-ID action success is high because the controller only uses the quotient-relevant part of the predicted label, which is the point of quotienting.}
+\label{tab:metrics}
+\begin{tabular}{llrrrr}
+\toprule
+Gripper & Identity target & Classes & Label acc. & Action succ. & Global-ID ceiling \\
+\midrule
+\input{tables/experiment_metrics.tex}
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:metrics} shows the intended separation.
+For pinch, suction, and enveloping grippers, global-ID accuracy is approximately bounded by the number of gripper-visible quotient classes divided by the 96 global states: 50.0\%, 25.0\%, and 12.5\%.
+The common label is perfectly observable because all grippers see size and shape, but it is insufficient for control: action success is 37.5\%, 75.0\%, and 50.0\%.
+ICIP has perfect label accuracy and action success because, by construction, it keeps exactly the distinctions each interface can observe and needs.
+
+\begin{table}[t]
+\centering
+\caption{Partition relations in the toy world. Pinch refines enveloping, but suction is non-nested with both pinch and enveloping. This is the structural condition that makes a single minimal identity inappropriate.}
+\label{tab:relations}
+\begin{tabular}{lcc}
+\toprule
+Pair & First refines second & Second refines first \\
+\midrule
+\input{tables/partition_relations.tex}
+\end{tabular}
+\end{table}
+
+The experiment is not meant to prove real-world prevalence.
+It demonstrates a failure mode that a larger model, uncertainty wrapper, or verifier would not remove: the wrong label space can be unobservable or insufficient before estimation begins.
+
+\section{Literature Audit and Novelty Boundary}
+
+We ran a 1000-paper landscape sweep over manipulation perception queries, then extracted a 300-paper serious skim, a 225-paper deeper metadata/abstract read, and a 100-paper hostile prior-work set.
+The full matrix records, for each entry, the claimed problem, mechanism, hidden assumptions, fixed variables, ignored failures, what it makes less novel, and what it leaves open.
+The audit was conducted under API limits: Crossref was available, while OpenAlex and Semantic Scholar returned HTTP 429.
+Therefore the audit is useful for breadth and hostility, but not a final full-PDF related-work substitute.
+
+The hostile set made several weak moves unacceptable.
+A bigger tactile model would only estimate a fixed label better.
+Active probing would choose actions for a fixed identity variable.
+A multi-gripper benchmark would expose the issue but not supply the mechanism.
+Affordance learning comes closest, yet it can still leave object identity fixed and treat action as a property query.
+The remaining novelty boundary is the quotient mechanism: identity is the observable-and-sufficient partition induced by the interface.
+
+\section{Limitations}
+
+This paper is a formal and mechanistic argument with synthetic evidence.
+It has no real robot trials.
+The toy world is deliberately discrete and favorable to ICIP because the observation and task partitions are hand-specified.
+The literature sweep is broad but metadata-limited.
+The theorem does not say universal latent states are impossible; it says deployable identity labels that must be both observable and task-sufficient may need to be interface-indexed.
+For a full submission, the next necessary step is a real multi-gripper dataset where visually identical or globally labeled objects split and collapse differently under pinch, suction, and enveloping interactions.
+
+\section{Conclusion}
+
+Manipulation perception should not always ask a gripper to estimate a fixed object identity.
+When interaction changes observables, the gripper is part of the identity relation.
+ICIP gives a compact way to express this: object identity is a quotient over latent states induced by the observation and control needs of a gripper-action interface.
+The formal result and runnable evidence show why a single gripper-agnostic identity can be the wrong abstraction even before model capacity or data scale enter the discussion.
+
+\section*{Reproducibility Statement}
+
+The repository contains the literature sweep scripts, generated matrix, synthesis documents, and the full synthetic experiment.
+Run \texttt{python experiments/run\_icip\_experiment.py} from the repository root to reproduce the CSV metrics and LaTeX table snippets.
+No external Python packages are required for the experiment.
+
+\bibliography{references}
+\bibliographystyle{iclr2026_conference}
+
+\end{document}

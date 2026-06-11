@@ -1,0 +1,139 @@
+{
+  "num_latent_objects": 96,
+  "grippers": {
+    "pinch": [
+      "size",
+      "shape",
+      "stiffness",
+      "friction",
+      "mass"
+    ],
+    "suction": [
+      "size",
+      "shape",
+      "porosity",
+      "mass"
+    ],
+    "enveloping": [
+      "size",
+      "shape",
+      "stiffness"
+    ]
+  },
+  "metrics": [
+    {
+      "gripper": "pinch",
+      "label_scheme": "global",
+      "classes": 96,
+      "label_accuracy": 0.53125,
+      "action_success": 1.0,
+      "global_bayes_upper_bound": 0.5,
+      "collapsed_global_pairs": 48
+    },
+    {
+      "gripper": "pinch",
+      "label_scheme": "common",
+      "classes": 6,
+      "label_accuracy": 1.0,
+      "action_success": 0.375,
+      "global_bayes_upper_bound": 0.5,
+      "collapsed_global_pairs": 48
+    },
+    {
+      "gripper": "pinch",
+      "label_scheme": "icip",
+      "classes": 48,
+      "label_accuracy": 1.0,
+      "action_success": 1.0,
+      "global_bayes_upper_bound": 0.5,
+      "collapsed_global_pairs": 48
+    },
+    {
+      "gripper": "suction",
+      "label_scheme": "global",
+      "classes": 96,
+      "label_accuracy": 0.2520833333333333,
+      "action_success": 1.0,
+      "global_bayes_upper_bound": 0.25,
+      "collapsed_global_pairs": 144
+    },
+    {
+      "gripper": "suction",
+      "label_scheme": "common",
+      "classes": 6,
+      "label_accuracy": 1.0,
+      "action_success": 0.75,
+      "global_bayes_upper_bound": 0.25,
+      "collapsed_global_pairs": 144
+    },
+    {
+      "gripper": "suction",
+      "label_scheme": "icip",
+      "classes": 24,
+      "label_accuracy": 1.0,
+      "action_success": 1.0,
+      "global_bayes_upper_bound": 0.25,
+      "collapsed_global_pairs": 144
+    },
+    {
+      "gripper": "enveloping",
+      "label_scheme": "global",
+      "classes": 96,
+      "label_accuracy": 0.11666666666666667,
+      "action_success": 1.0,
+      "global_bayes_upper_bound": 0.125,
+      "collapsed_global_pairs": 336
+    },
+    {
+      "gripper": "enveloping",
+      "label_scheme": "common",
+      "classes": 6,
+      "label_accuracy": 1.0,
+      "action_success": 0.5,
+      "global_bayes_upper_bound": 0.125,
+      "collapsed_global_pairs": 336
+    },
+    {
+      "gripper": "enveloping",
+      "label_scheme": "icip",
+      "classes": 12,
+      "label_accuracy": 1.0,
+      "action_success": 1.0,
+      "global_bayes_upper_bound": 0.125,
+      "collapsed_global_pairs": 336
+    }
+  ],
+  "relations": [
+    {
+      "partition_a": "pinch",
+      "partition_b": "suction",
+      "a_refines_b": false
+    },
+    {
+      "partition_a": "pinch",
+      "partition_b": "enveloping",
+      "a_refines_b": true
+    },
+    {
+      "partition_a": "suction",
+      "partition_b": "pinch",
+      "a_refines_b": false
+    },
+    {
+      "partition_a": "suction",
+      "partition_b": "enveloping",
+      "a_refines_b": false
+    },
+    {
+      "partition_a": "enveloping",
+      "partition_b": "pinch",
+      "a_refines_b": false
+    },
+    {
+      "partition_a": "enveloping",
+      "partition_b": "suction",
+      "a_refines_b": false
+    }
+  ],
+  "interpretation": "Global identity is sufficient but not observable under each single gripper channel; the common gripper-agnostic label is observable but loses task distinctions; ICIP is both observable and sufficient in this constructed world."
+}

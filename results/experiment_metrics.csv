@@ -1,0 +1,10 @@
+gripper,label_scheme,classes,label_accuracy,action_success,global_bayes_upper_bound,collapsed_global_pairs
+pinch,global,96,0.53125,1.0,0.5,48
+pinch,common,6,1.0,0.375,0.5,48
+pinch,icip,48,1.0,1.0,0.5,48
+suction,global,96,0.2520833333333333,1.0,0.25,144
+suction,common,6,1.0,0.75,0.25,144
+suction,icip,24,1.0,1.0,0.25,144
+enveloping,global,96,0.11666666666666667,1.0,0.125,336
+enveloping,common,6,1.0,0.5,0.125,336
+enveloping,icip,12,1.0,1.0,0.125,336

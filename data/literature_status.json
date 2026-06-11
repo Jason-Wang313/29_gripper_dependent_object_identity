@@ -1,0 +1,19 @@
+{
+  "raw_records": 1627,
+  "matrix_rows": 1000,
+  "serious_skim_rows": 300,
+  "deep_read_rows": 225,
+  "hostile_rows": 100,
+  "top_titles": [
+    "Perception, control, and hardware for in-hand slip-aware object manipulation with parallel grippers",
+    "Systematic object-invariant in-hand manipulation via reconfigurable underactuation: Introducing the RUTH gripper",
+    "Bioinspired Swallowing Soft Gripper with Toroidal Optical Waveguides for Multimodal Interactive Perception",
+    "Enhancing user perception through haptic feedback during aerial manipulation",
+    "Teaching and Reproduction for In-Hand Object Manipulation",
+    "Evaluation of different robotic grippers for simultaneous multi-object grasping",
+    "Contact Location Display for Haptic Perception of Curvature and Object Motion",
+    "Hand-object configuration estimation using particle filters for dexterous in-hand manipulation",
+    "Towards automating construction tasks: Largescale object mapping, segmentation, and manipulation",
+    "Proprioceptive Object Shape and Size Extraction via In-Hand-Manipulation with a Variable Friction Robot Gripper"
+  ]
+}

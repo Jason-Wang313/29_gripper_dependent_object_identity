@@ -1,0 +1,105 @@
+[2026-06-11 21:53:37] Starting OpenAlex retrieval with 0 cached records
+[2026-06-11 21:53:37] HTTP 429 for https://api.openalex.org/works?search=robot+tactile+object+recognition&filter=from_publication_date%3A1985-01-01&sort=ci
+[2026-06-11 21:53:40] HTTP 429 for https://api.openalex.org/works?search=robot+tactile+object+recognition&filter=from_publication_date%3A1985-01-01&sort=ci
+[2026-06-11 21:53:48] HTTP 429 for https://api.openalex.org/works?search=robot+tactile+object+recognition&filter=from_publication_date%3A1985-01-01&sort=ci
+[2026-06-11 21:53:59] No payload for query='robot tactile object recognition' page=1
+[2026-06-11 21:53:59] HTTP 429 for https://api.openalex.org/works?search=robot+tactile+object+recognition&filter=from_publication_date%3A1985-01-01&sort=ci
+[2026-06-11 21:54:02] HTTP 429 for https://api.openalex.org/works?search=robot+tactile+object+recognition&filter=from_publication_date%3A1985-01-01&sort=ci
+[2026-06-11 21:54:09] HTTP 429 for https://api.openalex.org/works?search=robot+tactile+object+recognition&filter=from_publication_date%3A1985-01-01&sort=ci
+[2026-06-11 21:54:20] No payload for query='robot tactile object recognition' page=2
+[2026-06-11 21:54:20] HTTP 429 for https://api.openalex.org/works?search=robot+tactile+object+recognition&filter=from_publication_date%3A1985-01-01&sort=ci
+[2026-06-11 21:54:24] HTTP 429 for https://api.openalex.org/works?search=robot+tactile+object+recognition&filter=from_publication_date%3A1985-01-01&sort=ci
+[2026-06-11 21:54:31] HTTP 429 for https://api.openalex.org/works?search=robot+tactile+object+recognition&filter=from_publication_date%3A1985-01-01&sort=ci
+[2026-06-11 21:54:42] No payload for query='robot tactile object recognition' page=3
+[2026-06-11 21:54:42] HTTP 429 for https://api.openalex.org/works?search=robot+tactile+object+recognition&filter=from_publication_date%3A1985-01-01&sort=ci
+[2026-06-11 21:54:45] HTTP 429 for https://api.openalex.org/works?search=robot+tactile+object+recognition&filter=from_publication_date%3A1985-01-01&sort=ci
+[2026-06-11 21:54:52] HTTP 429 for https://api.openalex.org/works?search=robot+tactile+object+recognition&filter=from_publication_date%3A1985-01-01&sort=ci
+[2026-06-11 21:55:03] No payload for query='robot tactile object recognition' page=4
+[2026-06-11 21:55:03] HTTP 429 for https://api.openalex.org/works?search=interactive+perception+robotics+object+manipulation&filter=from_publication_date%3
+[2026-06-11 21:55:06] HTTP 429 for https://api.openalex.org/works?search=interactive+perception+robotics+object+manipulation&filter=from_publication_date%3
+[2026-06-11 21:55:13] HTTP 429 for https://api.openalex.org/works?search=interactive+perception+robotics+object+manipulation&filter=from_publication_date%3
+[2026-06-11 21:55:24] No payload for query='interactive perception robotics object manipulation' page=1
+[2026-06-11 21:55:24] HTTP 429 for https://api.openalex.org/works?search=interactive+perception+robotics+object+manipulation&filter=from_publication_date%3
+[2026-06-11 21:55:28] HTTP 429 for https://api.openalex.org/works?search=interactive+perception+robotics+object+manipulation&filter=from_publication_date%3
+[2026-06-11 21:55:35] HTTP 429 for https://api.openalex.org/works?search=interactive+perception+robotics+object+manipulation&filter=from_publication_date%3
+[2026-06-11 21:55:46] No payload for query='interactive perception robotics object manipulation' page=2
+[2026-06-11 21:55:46] HTTP 429 for https://api.openalex.org/works?search=interactive+perception+robotics+object+manipulation&filter=from_publication_date%3
+[2026-06-11 21:55:49] HTTP 429 for https://api.openalex.org/works?search=interactive+perception+robotics+object+manipulation&filter=from_publication_date%3
+[2026-06-11 21:55:56] HTTP 429 for https://api.openalex.org/works?search=interactive+perception+robotics+object+manipulation&filter=from_publication_date%3
+[2026-06-11 21:56:07] No payload for query='interactive perception robotics object manipulation' page=3
+[2026-06-11 21:56:07] HTTP 429 for https://api.openalex.org/works?search=interactive+perception+robotics+object+manipulation&filter=from_publication_date%3
+[2026-06-11 21:56:10] HTTP 429 for https://api.openalex.org/works?search=interactive+perception+robotics+object+manipulation&filter=from_publication_date%3
+[2026-06-11 21:56:18] HTTP 429 for https://api.openalex.org/works?search=interactive+perception+robotics+object+manipulation&filter=from_publication_date%3
+[2026-06-11 21:56:29] No payload for query='interactive perception robotics object manipulation' page=4
+[2026-06-11 21:56:29] HTTP 429 for https://api.openalex.org/works?search=robot+manipulation+object+identity&filter=from_publication_date%3A1985-01-01&sort=
+[2026-06-11 21:56:32] HTTP 429 for https://api.openalex.org/works?search=robot+manipulation+object+identity&filter=from_publication_date%3A1985-01-01&sort=
+[2026-06-11 21:56:39] HTTP 429 for https://api.openalex.org/works?search=robot+manipulation+object+identity&filter=from_publication_date%3A1985-01-01&sort=
+[2026-06-11 21:56:50] No payload for query='robot manipulation object identity' page=1
+[2026-06-11 21:56:50] HTTP 429 for https://api.openalex.org/works?search=robot+manipulation+object+identity&filter=from_publication_date%3A1985-01-01&sort=
+[2026-06-11 21:56:53] HTTP 429 for https://api.openalex.org/works?search=robot+manipulation+object+identity&filter=from_publication_date%3A1985-01-01&sort=
+[2026-06-11 21:57:00] HTTP 429 for https://api.openalex.org/works?search=robot+manipulation+object+identity&filter=from_publication_date%3A1985-01-01&sort=
+[2026-06-11 21:57:11] No payload for query='robot manipulation object identity' page=2
+[2026-06-11 21:57:11] HTTP 429 for https://api.openalex.org/works?search=robot+manipulation+object+identity&filter=from_publication_date%3A1985-01-01&sort=
+[2026-06-11 21:57:14] HTTP 429 for https://api.openalex.org/works?search=robot+manipulation+object+identity&filter=from_publication_date%3A1985-01-01&sort=
+[2026-06-11 21:57:22] HTTP 429 for https://api.openalex.org/works?search=robot+manipulation+object+identity&filter=from_publication_date%3A1985-01-01&sort=
+[2026-06-11 21:57:33] No payload for query='robot manipulation object identity' page=3
+[2026-06-11 21:57:33] HTTP 429 for https://api.openalex.org/works?search=robot+manipulation+object+identity&filter=from_publication_date%3A1985-01-01&sort=
+[2026-06-11 21:57:36] HTTP 429 for https://api.openalex.org/works?search=robot+manipulation+object+identity&filter=from_publication_date%3A1985-01-01&sort=
+[2026-06-11 21:57:43] HTTP 429 for https://api.openalex.org/works?search=robot+manipulation+object+identity&filter=from_publication_date%3A1985-01-01&sort=
+[2026-06-11 21:57:54] No payload for query='robot manipulation object identity' page=4
+[2026-06-11 21:57:54] HTTP 429 for https://api.openalex.org/works?search=robot+grasping+object+recognition&filter=from_publication_date%3A1985-01-01&sort=c
+[2026-06-11 21:57:57] HTTP 429 for https://api.openalex.org/works?search=robot+grasping+object+recognition&filter=from_publication_date%3A1985-01-01&sort=c
+[2026-06-11 21:58:04] HTTP 429 for https://api.openalex.org/works?search=robot+grasping+object+recognition&filter=from_publication_date%3A1985-01-01&sort=c
+[2026-06-11 21:58:15] No payload for query='robot grasping object recognition' page=1
+[2026-06-11 21:58:15] HTTP 429 for https://api.openalex.org/works?search=robot+grasping+object+recognition&filter=from_publication_date%3A1985-01-01&sort=c
+[2026-06-11 21:58:19] HTTP 429 for https://api.openalex.org/works?search=robot+grasping+object+recognition&filter=from_publication_date%3A1985-01-01&sort=c
+[2026-06-11 21:58:26] HTTP 429 for https://api.openalex.org/works?search=robot+grasping+object+recognition&filter=from_publication_date%3A1985-01-01&sort=c
+[2026-06-11 21:58:37] No payload for query='robot grasping object recognition' page=2
+[2026-06-11 21:58:37] HTTP 429 for https://api.openalex.org/works?search=robot+grasping+object+recognition&filter=from_publication_date%3A1985-01-01&sort=c
+[2026-06-11 21:58:40] HTTP 429 for https://api.openalex.org/works?search=robot+grasping+object+recognition&filter=from_publication_date%3A1985-01-01&sort=c
+[2026-06-11 21:58:47] HTTP 429 for https://api.openalex.org/works?search=robot+grasping+object+recognition&filter=from_publication_date%3A1985-01-01&sort=c
+[2026-06-11 21:58:47] FATAL literature_sweep exception: OSError: [Errno 22] Invalid argument
+[2026-06-11 22:03:49] Starting Crossref retrieval with 0 cached records
+[2026-06-11 22:03:51] crossref query='robot tactile object recognition' offset=0 returned 100
+[2026-06-11 22:03:51] crossref added 100; total raw=100
+[2026-06-11 22:03:53] crossref query='robot tactile object recognition' offset=100 returned 100
+[2026-06-11 22:03:53] crossref added 99; total raw=199
+[2026-06-11 22:03:54] crossref query='robot tactile object recognition' offset=200 returned 100
+[2026-06-11 22:03:55] crossref added 100; total raw=299
+[2026-06-11 22:03:56] crossref query='robot tactile object recognition' offset=300 returned 100
+[2026-06-11 22:03:56] crossref added 100; total raw=399
+[2026-06-11 22:03:58] crossref query='robot tactile object recognition' offset=400 returned 100
+[2026-06-11 22:03:58] crossref added 100; total raw=499
+[2026-06-11 22:03:59] crossref query='interactive perception robotics object manipulation' offset=0 returned 100
+[2026-06-11 22:03:59] crossref added 98; total raw=597
+[2026-06-11 22:04:01] crossref query='interactive perception robotics object manipulation' offset=100 returned 100
+[2026-06-11 22:04:01] crossref added 99; total raw=696
+[2026-06-11 22:04:02] crossref query='interactive perception robotics object manipulation' offset=200 returned 100
+[2026-06-11 22:04:02] crossref added 99; total raw=795
+[2026-06-11 22:04:04] crossref query='interactive perception robotics object manipulation' offset=300 returned 100
+[2026-06-11 22:04:04] crossref added 97; total raw=892
+[2026-06-11 22:04:05] crossref query='interactive perception robotics object manipulation' offset=400 returned 100
+[2026-06-11 22:04:05] crossref added 94; total raw=986
+[2026-06-11 22:04:07] crossref query='robot manipulation object identity' offset=0 returned 100
+[2026-06-11 22:04:07] crossref added 54; total raw=1040
+[2026-06-11 22:04:08] crossref query='robot manipulation object identity' offset=100 returned 100
+[2026-06-11 22:04:08] crossref added 46; total raw=1086
+[2026-06-11 22:04:10] crossref query='robot manipulation object identity' offset=200 returned 100
+[2026-06-11 22:04:10] crossref added 76; total raw=1162
+[2026-06-11 22:04:12] crossref query='robot manipulation object identity' offset=300 returned 100
+[2026-06-11 22:04:12] crossref added 84; total raw=1246
+[2026-06-11 22:04:14] crossref query='robot manipulation object identity' offset=400 returned 100
+[2026-06-11 22:04:14] crossref added 95; total raw=1341
+[2026-06-11 22:04:15] crossref query='robot grasping object recognition' offset=0 returned 100
+[2026-06-11 22:04:15] crossref added 82; total raw=1423
+[2026-06-11 22:04:16] crossref query='robot grasping object recognition' offset=100 returned 100
+[2026-06-11 22:04:16] crossref added 70; total raw=1493
+[2026-06-11 22:04:18] crossref query='robot grasping object recognition' offset=200 returned 100
+[2026-06-11 22:04:18] crossref added 54; total raw=1547
+[2026-06-11 22:04:19] crossref query='robot grasping object recognition' offset=300 returned 100
+[2026-06-11 22:04:19] crossref added 43; total raw=1590
+[2026-06-11 22:04:20] crossref query='robot grasping object recognition' offset=400 returned 100
+[2026-06-11 22:04:20] crossref added 37; total raw=1627
+[2026-06-11 22:04:21] Crossref retrieval complete with 1627 raw records
+[2026-06-11 22:04:21] Skipping OpenAlex live retrieval because this environment is currently rate-limited and cache is empty
+[2026-06-11 22:04:24] Literature status: {"raw_records": 1627, "matrix_rows": 1000, "serious_skim_rows": 300, "deep_read_rows": 225, "hostile_rows": 100, "top_titles": ["Perception, control, and hardware for in-hand slip-aware object manipulation with parallel grippers", "Systematic object-invariant in-hand manipulation via reconfigurable underactuation: Introducing the RUTH gripper", "Bioinspired Swallowing Soft Gripper with Toroidal Optical Waveguides for Multimodal Interactive Perception", "Enhancing user perception through haptic feedback during aerial manipulation", "Teaching and Reproduction for In-Hand Object Manipulation", "Evaluation of different robotic grippers for simultaneous multi-object grasping", "Contact Location Display for Haptic Perception of Curvature and Object Motion", "Hand-object configuration estimation using particle filters for dexterous in-hand manipulation", "Towards automating construction tasks: Largescale object mapping, segmentation, and manipulation", "Proprioceptive Object Shape and Size Extraction via In-Hand-Manipulation with a Variable Friction Robot Gripper"]}
