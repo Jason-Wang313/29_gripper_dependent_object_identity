@@ -1,0 +1,7 @@
+partition_a,partition_b,a_refines_b
+pinch,suction,False
+pinch,enveloping,True
+suction,pinch,False
+suction,enveloping,False
+enveloping,pinch,False
+enveloping,suction,False
