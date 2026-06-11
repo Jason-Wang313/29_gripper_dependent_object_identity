@@ -1,8 +1,8 @@
 # Child Status 29
 
-Status: executing plan
+Status: complete
 Attempt: 2
-Stage: final audit written; preparing commit and GitHub push
+Stage: repo pushed; final artifacts present
 
 Exact commands run:
 - Workspace/file inspection commands using `Get-Location`, `Get-ChildItem`, `Get-Content`, `git status --short`, and safe `Get-Command` probes.
@@ -17,12 +17,16 @@ Exact commands run:
 - `pdflatex -interaction=nonstopmode -halt-on-error main.tex` (initial pass failed on table wrapper, then succeeded after patch).
 - `bibtex main`
 - Additional serial `pdflatex` passes completed successfully.
+- `Copy-Item -LiteralPath 'paper\main.pdf' -Destination 'C:\Users\wangz\Downloads\29.pdf' -Force`
 - `pdfinfo 'C:\Users\wangz\Downloads\29.pdf'`
 - `pdftotext 'C:\Users\wangz\Downloads\29.pdf' -`
 - `gh --version`
 - `gh auth status`
 - `gh repo view Jason-Wang313/29_gripper_dependent_object_identity --json nameWithOwner,url,visibility`
 - `gh repo create 29_gripper_dependent_object_identity --public --source . --remote origin`
+- `git add -A`
+- `git commit -m "Build gripper-dependent identity paper package"`
+- `git push -u origin master`
 
 Findings:
 - `docs/related_work_matrix.csv` has 1000 rows.
@@ -30,11 +34,8 @@ Findings:
 - Experiment completed: 96 latent objects, 3 grippers, 9 metric rows.
 - Final PDF compiled to 6 pages with no unresolved citations/references.
 - Exact final PDF copied to `C:\Users\wangz\Downloads\29.pdf`.
-- Public GitHub repo created: `https://github.com/Jason-Wang313/29_gripper_dependent_object_identity`.
-- Final audit written at `docs/final_audit.md`.
-
-Edits:
-- Added plan, status, README, scripts, experiment, docs, results, paper source, official ICLR style files, and final audit.
+- Public GitHub repo created and pushed: `https://github.com/Jason-Wang313/29_gripper_dependent_object_identity`.
+- Final audit exists at `docs/final_audit.md`.
 
 Failures:
 - Previous run failure: OpenAlex rate limit and `OSError: [Errno 22] Invalid argument`.
@@ -42,6 +43,6 @@ Failures:
 - First LaTeX pass failed on `booktabs` bottom rule after generated table include; removed bottom rules and rebuilt successfully.
 
 Recovery steps:
-- Use Crossref-derived 1000-paper sweep and mark limits honestly.
-- Build paper around formal finite-partition claim plus synthetic evidence.
-- Commit and push complete repo next.
+- Used Crossref-derived 1000-paper sweep and marked limits honestly.
+- Built paper around formal finite-partition claim plus synthetic evidence.
+- Pushed complete runnable repo.
