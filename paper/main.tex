@@ -20,6 +20,13 @@
 
 \maketitle
 
+\paragraph{Submission-hardening version: v2.}
+This revision adds a hidden-task stress. ICIP is not a substitute for missing
+sensing: when each gripper's task is changed to require one attribute that its
+interface cannot observe, ICIP action success drops from 100.0\% to 50.0\% for
+pinch, suction, and enveloping. The supported claim is therefore conditional on
+the interface observing the task-relevant distinctions.
+
 \begin{abstract}
 Robot manipulation papers usually treat object identity as a property of the object, then ask a gripper, sensor, or active policy to estimate that fixed label.
 This abstraction becomes brittle when the gripper is part of the observation process: a pinch gripper may reveal stiffness and friction, a suction cup may reveal porosity and seal quality, and an enveloping hand may reveal size and compliance while collapsing distinctions that matter elsewhere.
@@ -27,6 +34,7 @@ We argue that manipulation perception should represent object identity as an int
 For a gripper-action interface, two states have the same identity when the interface cannot distinguish them and no task-relevant controller needs to.
 We formalize this as an Interface-Conditioned Identity Partition (ICIP), prove a finite partition impossibility result showing when no single gripper-agnostic identity can be both observable and sufficient, and provide a small reproducible manipulation-perception experiment.
 In the experiment, global object IDs are sufficient but not observable from a single gripper channel; common gripper-agnostic labels are observable but not sufficient for control; ICIP recovers the observable and task-sufficient distinctions.
+The v2 hidden-task stress shows the boundary: if a task requires a gripper-hidden attribute, ICIP falls to 50.0\% action success, so the mechanism must be paired with sensing or abstention for unobservable task demands.
 The contribution is not a larger model or a new benchmark, but a change in the central representational variable for contact-rich manipulation.
 \end{abstract}
 
@@ -179,6 +187,31 @@ Pair & First refines second & Second refines first \\
 The experiment is not meant to prove real-world prevalence.
 It demonstrates a failure mode that a larger model, uncertainty wrapper, or verifier would not remove: the wrong label space can be unobservable or insufficient before estimation begins.
 
+\paragraph{V2 hidden-task stress.}
+The main experiment assumes each gripper can observe every attribute needed by
+its own controller. To attack that assumption, we add one hidden task-relevant
+attribute per interface: porosity for pinch, friction for suction, and mass for
+enveloping. The observation channels are unchanged, but the controller now needs
+that hidden attribute. Table~\ref{tab:hidden-stress} shows that ICIP loses its
+perfect action success and falls to 50.0\% for all three grippers. Global ID
+also falls to approximately chance because the hidden attribute is not
+observable through the interface. This is the deployment boundary: ICIP is a
+quotient over what the interface can observe and use, not a magic recovery of
+unmeasured task variables.
+
+\begin{table}[t]
+\centering
+\caption{V2 hidden-task stress. The task is modified to require one attribute
+outside the gripper's observation channel. ICIP no longer remains sufficient.}
+\label{tab:hidden-stress}
+\begin{tabular}{lllrrr}
+\toprule
+Gripper & Identity target & Hidden attr. & Base succ. & Hidden succ. & Drop \\
+\midrule
+\input{tables/hidden_task_stress.tex}
+\end{tabular}
+\end{table}
+
 \section{Literature Audit and Novelty Boundary}
 
 We ran a 1000-paper landscape sweep over manipulation perception queries, then extracted a 300-paper serious skim, a 225-paper deeper metadata/abstract read, and a 100-paper hostile prior-work set.
@@ -198,6 +231,7 @@ The remaining novelty boundary is the quotient mechanism: identity is the observ
 This paper is a formal and mechanistic argument with synthetic evidence.
 It has no real robot trials.
 The toy world is deliberately discrete and favorable to ICIP because the observation and task partitions are hand-specified.
+The v2 stress shows the most important failure boundary: if the task partition depends on an attribute hidden from the interface, ICIP is no longer sufficient and the robot needs another sensor, another gripper, an information-gathering action, or abstention.
 The literature sweep is broad but metadata-limited.
 The theorem does not say universal latent states are impossible; it says deployable identity labels that must be both observable and task-sufficient may need to be interface-indexed.
 For a full submission, the next necessary step is a real multi-gripper dataset where visually identical or globally labeled objects split and collapse differently under pinch, suction, and enveloping interactions.
@@ -213,6 +247,7 @@ The formal result and runnable evidence show why a single gripper-agnostic ident
 
 The repository contains the literature sweep scripts, generated matrix, synthesis documents, and the full synthetic experiment.
 Run \texttt{python experiments/run\_icip\_experiment.py} from the repository root to reproduce the CSV metrics and LaTeX table snippets.
+The v2 stress is written to \texttt{results/hidden\_task\_stress.csv} and \texttt{paper/tables/hidden\_task\_stress.tex}.
 No external Python packages are required for the experiment.
 
 \bibliography{references}

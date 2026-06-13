@@ -10,3 +10,4 @@
 8. **No real robot.** Concede. Paper-readiness should be workshop/revise unless paired with real robot validation.
 9. **The theorem is obvious.** Response: the novelty is not lattice theory alone; it is applying the observability/sufficiency conflict to object identity in gripper-dependent manipulation perception and making it operational.
 10. **The name identity may confuse readers.** Response: define it operationally as a task-facing equivalence relation, not metaphysical object sameness.
+11. **ICIP fails if the gripper cannot sense a task-critical property.** Response: yes, and v2 quantifies it. When tasks require porosity for pinch, friction for suction, or mass for enveloping, ICIP action success falls from 100.0% to 50.0%. The claim is conditional on the interface observing the task-relevant quotient or on adding sensing/abstention.
