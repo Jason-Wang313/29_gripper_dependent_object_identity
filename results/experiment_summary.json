@@ -135,5 +135,79 @@
       "a_refines_b": false
     }
   ],
-  "interpretation": "Global identity is sufficient but not observable under each single gripper channel; the common gripper-agnostic label is observable but loses task distinctions; ICIP is both observable and sufficient in this constructed world."
+  "hidden_task_stress": [
+    {
+      "gripper": "pinch",
+      "label_scheme": "global",
+      "hidden_required_attribute": "porosity",
+      "baseline_action_success": 1.0,
+      "hidden_task_action_success": 0.48125,
+      "action_success_drop": 0.51875
+    },
+    {
+      "gripper": "pinch",
+      "label_scheme": "common",
+      "hidden_required_attribute": "porosity",
+      "baseline_action_success": 0.375,
+      "hidden_task_action_success": 0.1875,
+      "action_success_drop": 0.1875
+    },
+    {
+      "gripper": "pinch",
+      "label_scheme": "icip",
+      "hidden_required_attribute": "porosity",
+      "baseline_action_success": 1.0,
+      "hidden_task_action_success": 0.5,
+      "action_success_drop": 0.5
+    },
+    {
+      "gripper": "suction",
+      "label_scheme": "global",
+      "hidden_required_attribute": "friction",
+      "baseline_action_success": 1.0,
+      "hidden_task_action_success": 0.4979166666666667,
+      "action_success_drop": 0.5020833333333333
+    },
+    {
+      "gripper": "suction",
+      "label_scheme": "common",
+      "hidden_required_attribute": "friction",
+      "baseline_action_success": 0.75,
+      "hidden_task_action_success": 0.375,
+      "action_success_drop": 0.375
+    },
+    {
+      "gripper": "suction",
+      "label_scheme": "icip",
+      "hidden_required_attribute": "friction",
+      "baseline_action_success": 1.0,
+      "hidden_task_action_success": 0.5,
+      "action_success_drop": 0.5
+    },
+    {
+      "gripper": "enveloping",
+      "label_scheme": "global",
+      "hidden_required_attribute": "mass",
+      "baseline_action_success": 1.0,
+      "hidden_task_action_success": 0.5145833333333333,
+      "action_success_drop": 0.4854166666666667
+    },
+    {
+      "gripper": "enveloping",
+      "label_scheme": "common",
+      "hidden_required_attribute": "mass",
+      "baseline_action_success": 0.5,
+      "hidden_task_action_success": 0.25,
+      "action_success_drop": 0.25
+    },
+    {
+      "gripper": "enveloping",
+      "label_scheme": "icip",
+      "hidden_required_attribute": "mass",
+      "baseline_action_success": 1.0,
+      "hidden_task_action_success": 0.5,
+      "action_success_drop": 0.5
+    }
+  ],
+  "interpretation": "Global identity is sufficient but not observable under each single gripper channel; the common gripper-agnostic label is observable but loses task distinctions; ICIP is both observable and sufficient in this constructed world. The hidden-task stress shows that ICIP also fails when the task requires an attribute the interface cannot observe."
 }

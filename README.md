@@ -8,6 +8,13 @@ Anonymous ICLR-style paper package for:
 
 Object identity for robot manipulation should be represented as an interface-conditioned partition, not as a single gripper-agnostic label, whenever different gripper-action channels induce non-nested observability relations.
 
+## Hardening Status
+
+This is the v2 submission-hardened version. The added hidden-task stress shows
+the deployment boundary: when each gripper's task is changed to require one
+attribute outside its observation channel, ICIP action success drops from
+100.0% to 50.0% for pinch, suction, and enveloping.
+
 ## Reproduce Evidence
 
 From the repository root:
@@ -20,9 +27,11 @@ This regenerates:
 
 - `results/experiment_metrics.csv`
 - `results/partition_relations.csv`
+- `results/hidden_task_stress.csv`
 - `results/experiment_summary.json`
 - `paper/tables/experiment_metrics.tex`
 - `paper/tables/partition_relations.tex`
+- `paper/tables/hidden_task_stress.tex`
 
 The experiment uses only the Python standard library.
 
@@ -37,16 +46,12 @@ The current run used Crossref because OpenAlex and Semantic Scholar returned HTT
 
 ## Build Paper
 
-From `paper/`:
-
 ```powershell
-pdflatex -interaction=nonstopmode -halt-on-error main.tex
-bibtex main
-pdflatex -interaction=nonstopmode -halt-on-error main.tex
-pdflatex -interaction=nonstopmode -halt-on-error main.tex
+powershell -ExecutionPolicy Bypass -File scripts/build_pdf.ps1
 ```
 
-The paper uses the official ICLR 2026 style files copied into `paper/`.
+The build script copies the final PDF to Downloads and removes the transient
+local `paper/main.pdf`.
 
 ## Final PDF
 

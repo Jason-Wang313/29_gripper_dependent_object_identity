@@ -1,0 +1,10 @@
+gripper,label_scheme,hidden_required_attribute,baseline_action_success,hidden_task_action_success,action_success_drop
+pinch,global,porosity,1.0,0.48125,0.51875
+pinch,common,porosity,0.375,0.1875,0.1875
+pinch,icip,porosity,1.0,0.5,0.5
+suction,global,friction,1.0,0.4979166666666667,0.5020833333333333
+suction,common,friction,0.75,0.375,0.375
+suction,icip,friction,1.0,0.5,0.5
+enveloping,global,mass,1.0,0.5145833333333333,0.4854166666666667
+enveloping,common,mass,0.5,0.25,0.25
+enveloping,icip,mass,1.0,0.5,0.5

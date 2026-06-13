@@ -148,10 +148,15 @@ def predict(centroids: dict[str, tuple[float, ...]], vector: tuple[float, ...]) 
     return best_label
 
 
-def majority_actions(objects: list[Obj], labels: list[str], gripper: str) -> dict[str, str]:
+def majority_actions(
+    objects: list[Obj],
+    labels: list[str],
+    gripper: str,
+    action_fn: Callable[[Obj, str], str] = optimal_action,
+) -> dict[str, str]:
     buckets: dict[str, Counter[str]] = defaultdict(Counter)
     for obj, label in zip(objects, labels):
-        buckets[label][optimal_action(obj, gripper)] += 1
+        buckets[label][action_fn(obj, gripper)] += 1
     return {label: counter.most_common(1)[0][0] for label, counter in buckets.items()}
 
 
@@ -183,7 +188,28 @@ def refines(objects: list[Obj], g_a: str, g_b: str) -> bool:
     return True
 
 
-def evaluate(gripper: str, kind: str, objects: list[Obj], rng: random.Random) -> dict[str, object]:
+def hidden_task_attribute(gripper: str) -> str:
+    if gripper == "pinch":
+        return "porosity"
+    if gripper == "suction":
+        return "friction"
+    if gripper == "enveloping":
+        return "mass"
+    raise ValueError(gripper)
+
+
+def hidden_task_action(obj: Obj, gripper: str) -> str:
+    hidden_attr = hidden_task_attribute(gripper)
+    return f"{optimal_action(obj, gripper)}/hidden-{hidden_attr}={getattr(obj, hidden_attr)}"
+
+
+def evaluate(
+    gripper: str,
+    kind: str,
+    objects: list[Obj],
+    rng: random.Random,
+    action_fn: Callable[[Obj, str], str] = optimal_action,
+) -> dict[str, object]:
     labels = label_fn(kind, gripper)
     train_samples: list[tuple[tuple[float, ...], str]] = []
     train_objects: list[Obj] = []
@@ -200,7 +226,7 @@ def evaluate(gripper: str, kind: str, objects: list[Obj], rng: random.Random) ->
             test_samples.append((observe(obj, gripper, rng), obj, labels(obj)))
 
     centroids = fit_centroids(train_samples)
-    action_by_label = majority_actions(train_objects, train_labels, gripper)
+    action_by_label = majority_actions(train_objects, train_labels, gripper, action_fn)
 
     correct = 0
     action_success = 0
@@ -208,7 +234,7 @@ def evaluate(gripper: str, kind: str, objects: list[Obj], rng: random.Random) ->
         pred = predict(centroids, vector)
         if pred == true_label:
             correct += 1
-        if action_by_label.get(pred) == optimal_action(obj, gripper):
+        if action_by_label.get(pred) == action_fn(obj, gripper):
             action_success += 1
 
     return {
@@ -220,6 +246,34 @@ def evaluate(gripper: str, kind: str, objects: list[Obj], rng: random.Random) ->
         "global_bayes_upper_bound": bayes_global_upper_bound(objects, gripper),
         "collapsed_global_pairs": collapsed_global_pairs(objects, gripper),
     }
+
+
+def evaluate_hidden_task_stress(
+    objects: list[Obj],
+    baseline_metrics: list[dict[str, object]],
+    rng: random.Random,
+) -> list[dict[str, object]]:
+    baseline = {
+        (str(row["gripper"]), str(row["label_scheme"])): float(row["action_success"])
+        for row in baseline_metrics
+    }
+    rows = []
+    for gripper in GRIPPER_FEATURES:
+        for kind in ["global", "common", "icip"]:
+            result = evaluate(gripper, kind, objects, rng, hidden_task_action)
+            base = baseline[(gripper, kind)]
+            hidden_success = float(result["action_success"])
+            rows.append(
+                {
+                    "gripper": gripper,
+                    "label_scheme": kind,
+                    "hidden_required_attribute": hidden_task_attribute(gripper),
+                    "baseline_action_success": base,
+                    "hidden_task_action_success": hidden_success,
+                    "action_success_drop": base - hidden_success,
+                }
+            )
+    return rows
 
 
 def write_metrics(metrics: list[dict[str, object]]) -> None:
@@ -252,6 +306,23 @@ def write_relations(objects: list[Obj]) -> list[dict[str, object]]:
         writer.writeheader()
         writer.writerows(rows)
     return rows
+
+
+def write_hidden_task_stress(rows: list[dict[str, object]]) -> None:
+    RESULTS.mkdir(parents=True, exist_ok=True)
+    path = RESULTS / "hidden_task_stress.csv"
+    fields = [
+        "gripper",
+        "label_scheme",
+        "hidden_required_attribute",
+        "baseline_action_success",
+        "hidden_task_action_success",
+        "action_success_drop",
+    ]
+    with path.open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(handle, fieldnames=fields)
+        writer.writeheader()
+        writer.writerows(rows)
 
 
 def pct(value: float) -> str:
@@ -294,6 +365,29 @@ def latex_table_relations(relations: list[dict[str, object]]) -> None:
     (TABLES / "partition_relations.tex").write_text("\n".join(rows) + "\n", encoding="utf-8")
 
 
+def latex_table_hidden_task_stress(rows: list[dict[str, object]]) -> None:
+    TABLES.mkdir(parents=True, exist_ok=True)
+    order = {"global": 0, "common": 1, "icip": 2}
+    gripper_order = {"pinch": 0, "suction": 1, "enveloping": 2}
+    lines = []
+    for row in sorted(rows, key=lambda r: (gripper_order[str(r["gripper"])], order[str(r["label_scheme"])])):
+        scheme = {"global": "Global ID", "common": "Common label", "icip": "ICIP"}[str(row["label_scheme"])]
+        lines.append(
+            " & ".join(
+                [
+                    str(row["gripper"]).title(),
+                    scheme,
+                    str(row["hidden_required_attribute"]),
+                    pct(float(row["baseline_action_success"])),
+                    pct(float(row["hidden_task_action_success"])),
+                    pct(float(row["action_success_drop"])),
+                ]
+            )
+            + r" \\"
+        )
+    (TABLES / "hidden_task_stress.tex").write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+
 def main() -> int:
     rng = random.Random(29)
     objects = all_objects()
@@ -304,18 +398,24 @@ def main() -> int:
 
     write_metrics(metrics)
     relations = write_relations(objects)
+    hidden_stress = evaluate_hidden_task_stress(objects, metrics, rng)
+    write_hidden_task_stress(hidden_stress)
     latex_table_metrics(metrics)
     latex_table_relations(relations)
+    latex_table_hidden_task_stress(hidden_stress)
 
     summary = {
         "num_latent_objects": len(objects),
         "grippers": GRIPPER_FEATURES,
         "metrics": metrics,
         "relations": relations,
+        "hidden_task_stress": hidden_stress,
         "interpretation": (
             "Global identity is sufficient but not observable under each single gripper "
             "channel; the common gripper-agnostic label is observable but loses task "
-            "distinctions; ICIP is both observable and sufficient in this constructed world."
+            "distinctions; ICIP is both observable and sufficient in this constructed world. "
+            "The hidden-task stress shows that ICIP also fails when the task requires an "
+            "attribute the interface cannot observe."
         ),
     }
     (RESULTS / "experiment_summary.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")

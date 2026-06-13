@@ -1,0 +1,29 @@
+﻿{
+    "status":  "complete",
+    "paper_dir":  "C:\\Users\\wangz\\robotics_60_paper_batch\\29_gripper_dependent_object_identity\\paper",
+    "downloads_pdf":  "C:/Users/wangz/Downloads/29.pdf",
+    "steps":  [
+                  {
+                      "name":  "pdflatex1",
+                      "exit_code":  0,
+                      "log":  "C:\\Users\\wangz\\robotics_60_paper_batch\\29_gripper_dependent_object_identity\\paper\\build_pdflatex1.log"
+                  },
+                  {
+                      "name":  "bibtex",
+                      "exit_code":  0,
+                      "log":  "C:\\Users\\wangz\\robotics_60_paper_batch\\29_gripper_dependent_object_identity\\paper\\build_bibtex.log"
+                  },
+                  {
+                      "name":  "pdflatex2",
+                      "exit_code":  0,
+                      "log":  "C:\\Users\\wangz\\robotics_60_paper_batch\\29_gripper_dependent_object_identity\\paper\\build_pdflatex2.log"
+                  },
+                  {
+                      "name":  "pdflatex3",
+                      "exit_code":  0,
+                      "log":  "C:\\Users\\wangz\\robotics_60_paper_batch\\29_gripper_dependent_object_identity\\paper\\build_pdflatex3.log"
+                  }
+              ],
+    "copied":  true,
+    "removed_local_pdf":  true
+}

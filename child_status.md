@@ -1,52 +1,36 @@
-# Child Status 29
+# Child Status: Paper 29
 
-Status: complete
-Attempt: 2
-Stage: repo pushed; final artifacts present
+Stage: complete; v2 submission hardening ready to commit and push
 
-Exact commands run:
-- Workspace/file inspection commands using `Get-Location`, `Get-ChildItem`, `Get-Content`, `git status --short`, and safe `Get-Command` probes.
-- API probes: Crossref HTTP 200; Semantic Scholar HTTP 429; OpenAlex HTTP 429.
-- `python -m py_compile scripts\literature_sweep.py; if ($LASTEXITCODE -ne 0) { 'py_compile_failed=' + $LASTEXITCODE }; exit 0`
-- `python scripts\literature_sweep.py; $code=$LASTEXITCODE; 'literature_sweep_exit=' + $code; exit 0`
-- `python -m py_compile scripts\synthesize_docs.py; if ($LASTEXITCODE -ne 0) { 'py_compile_failed=' + $LASTEXITCODE }; exit 0`
-- `python scripts\synthesize_docs.py; $code=$LASTEXITCODE; 'synthesize_docs_exit=' + $code; exit 0`
-- `python -m py_compile experiments\run_icip_experiment.py; if ($LASTEXITCODE -ne 0) { 'py_compile_failed=' + $LASTEXITCODE }; exit 0`
-- `python experiments\run_icip_experiment.py; $code=$LASTEXITCODE; 'icip_experiment_exit=' + $code; exit 0`
-- Downloaded official ICLR 2026 template archive, copied `iclr2026_conference.sty`, `iclr2026_conference.bst`, `natbib.sty`, `fancyhdr.sty`, and `math_commands.tex`, then removed the temporary archive/folder.
-- `pdflatex -interaction=nonstopmode -halt-on-error main.tex` (initial pass failed on table wrapper, then succeeded after patch).
-- `bibtex main`
-- Additional serial `pdflatex` passes completed successfully.
-- `Copy-Item -LiteralPath 'paper\main.pdf' -Destination 'C:\Users\wangz\Downloads\29.pdf' -Force`
-- `pdfinfo 'C:\Users\wangz\Downloads\29.pdf'`
-- `pdftotext 'C:\Users\wangz\Downloads\29.pdf' -`
-- `gh --version`
-- `gh auth status`
-- `gh repo view Jason-Wang313/29_gripper_dependent_object_identity --json nameWithOwner,url,visibility`
-- `gh repo create 29_gripper_dependent_object_identity --public --source . --remote origin`
-- `git add -A`
-- `git commit -m "Build gripper-dependent identity paper package"`
-- `git push -u origin master`
+Current facts:
+- Literature sweep completed with `docs/related_work_matrix.csv` containing 1000 rows and `docs/hostile_prior_work.md` plus the data hostile-prior CSV.
+- Main experiment generated 96 latent objects, three gripper interfaces, and 9 baseline metric rows.
+- Main result: ICIP is observable and task-sufficient in the constructed baseline; common labels are observable but insufficient; global IDs are sufficient but not observable.
+- V2 hidden-task stress generated `results/hidden_task_stress.csv` and `paper/tables/hidden_task_stress.tex`.
+- V2 stress result: when the task needs a gripper-hidden attribute, ICIP action success drops from 100.0% to 50.0% for pinch, suction, and enveloping.
+- Paper generated at `paper/main.tex` with visible v2 note, hidden-task stress table, narrowed abstract, and narrowed limitations.
+- LaTeX build completed with `scripts/build_pdf.ps1`.
+- Final PDF copied to `C:/Users/wangz/Downloads/29.pdf`.
+- Transient `paper/main.pdf` removed so the final PDF exists only at the required Downloads path.
+- Checked Desktop paths contain no `29.pdf`.
+- Public GitHub repo exists: `https://github.com/Jason-Wang313/29_gripper_dependent_object_identity`.
+- `docs/final_audit.md` exists and reports build status, v2 stress evidence, Downloads-only artifact status, Desktop absence, and local PDF absence.
 
-Findings:
-- `docs/related_work_matrix.csv` has 1000 rows.
-- Required literature docs exist.
-- Experiment completed: 96 latent objects, 3 grippers, 9 metric rows.
-- Final PDF compiled to 6 pages with no unresolved citations/references.
-- Exact final PDF copied to `C:\Users\wangz\Downloads\29.pdf`.
-- Public GitHub repo created and pushed: `https://github.com/Jason-Wang313/29_gripper_dependent_object_identity`.
-- Final audit exists at `docs/final_audit.md`.
+Commands run:
+- `python experiments\run_icip_experiment.py`
+- `powershell -ExecutionPolicy Bypass -File scripts\build_pdf.ps1`
+- Safe probes for build status, Downloads PDF, Desktop absence, local PDF absence, LaTeX log status, and generated stress outputs.
 
-Failures:
-- Previous run failure: OpenAlex rate limit and `OSError: [Errno 22] Invalid argument`.
-- Current optional provider probes: Semantic Scholar/OpenAlex HTTP 429.
-- First LaTeX pass failed on `booktabs` bottom rule after generated table include; removed bottom rules and rebuilt successfully.
+Historical failures:
+- OpenAlex and Semantic Scholar returned HTTP 429 during literature collection; Crossref fallback recovered the matrix.
+- A previous build failed on a generated table wrapper and was patched before v1.
+- The first v2 build failed on `\bottomrule` after the new generated hidden-stress table; removing that wrapper rule fixed the build.
 
-Recovery steps:
-- Used Crossref-derived 1000-paper sweep and marked limits honestly.
-- Built paper around formal finite-partition claim plus synthetic evidence.
-- Pushed complete runnable repo.
+Recovery / hardening steps:
+- Added v2 hidden-task stress and narrowed the ICIP claim to observable task-relevant quotients.
+- Added standard hardening docs: attack log, version log, hostile reviewer response, rigor checklist, reproducibility checklist, and readiness decision.
+- Added `scripts/build_pdf.ps1` and `.gitignore` rule for `paper/main.pdf`.
+- Rebuilt the canonical PDF and removed the tracked local PDF.
 
-Exit code: 0
-End time: 2026-06-11 22:26:00 +01:00
-PDF exists: True
+Next:
+- Commit and push the v2 hardening update.
