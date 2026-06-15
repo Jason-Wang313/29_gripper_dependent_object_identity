@@ -1,18 +1,26 @@
 # Claims
 
 ## Supported Claims
+
 1. In finite latent-state manipulation settings, every gripper-action observation channel induces an equivalence relation over object states.
-2. If two grippers induce non-nested partitions and their task outcomes require their respective distinctions, no single gripper-agnostic identity partition can be both observable for each gripper and sufficient for each gripper's task.
-3. The synthetic experiment demonstrates this failure mode for pinch, suction, and enveloping grippers: global IDs are not observable from a single gripper's channel, while the common gripper-agnostic label is observable but loses task-relevant distinctions.
-4. Interface-conditioned identity partitions recover the observable and task-sufficient distinctions in the toy environment.
-5. The v2 hidden-task stress shows the boundary: if the task requires an attribute hidden from the interface, ICIP action success drops from 100.0% to 50.0% for pinch, suction, and enveloping.
+2. An interface-conditioned identity partition is the minimal deployable quotient that is observable through an interface and sufficient for that interface's task partition.
+3. If two interfaces induce distinct unique minimal observable-sufficient partitions, no single identity partition is the unique minimal identity for both.
+4. If two required interface partitions are non-comparable, any single deployable compromise is either unobservable or insufficient for at least one interface.
+5. The v3 full-scale suite demonstrates the mechanism over 373,248 latent states, 7 interfaces, 6 regimes, and 10 identity/control strategies.
+6. In the baseline visible regime, oracle ICIP and learned ICIP reach 100.0% action success, while common gripper-agnostic labels reach 3.2%.
+7. Hidden-task regimes show the boundary: hidden-pair tasks reduce naive/oracle ICIP to 10.7% action success.
+8. Active sensing can restore success when targeted probes observe the missing task attributes; in the hidden-pair regime, active ICIP reaches 100.0% action success with 0.88 utility.
+9. Negative controls show that universal identity is appropriate when all interfaces share the same task partition or when global state is observable.
 
 ## Unsupported Or Only Partially Supported Claims
+
 1. The paper does not prove the phenomenon dominates real robot datasets.
 2. The paper does not introduce a new tactile sensor, gripper, or physical robot benchmark.
 3. The paper does not show real-world robot trials.
 4. The literature sweep is broad metadata/abstract coverage, not a verified full-PDF review of all 1000 entries.
-5. The paper does not solve missing sensing; hidden task-relevant attributes require another sensor, another interface, information gathering, or abstention.
+5. The simple active-sensing utility model is not a deployment-optimal safety policy.
+6. ICIP does not recover hidden task variables without sensing, routing, task revision, or abstention.
 
 ## Formal-Claim Status
-The main theorem is a finite partition impossibility result. It is proof-level in the paper if assumptions are stated exactly. The experiment is illustrative evidence, not a real-robot validation.
+
+The main results are finite partition impossibility statements. The experiments are large synthetic mechanism evidence with negative controls and failure cases, not real-robot validation.

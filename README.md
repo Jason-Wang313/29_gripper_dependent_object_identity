@@ -6,14 +6,30 @@ Anonymous ICLR-style paper package for:
 
 ## Thesis
 
-Object identity for robot manipulation should be represented as an interface-conditioned partition, not as a single gripper-agnostic label, whenever different gripper-action channels induce non-nested observability relations.
+Object identity for robot manipulation should be represented as an interface-conditioned partition, not as a single gripper-agnostic label, whenever different gripper-action channels induce distinct or non-comparable observability/task relations.
 
-## Hardening Status
+## Final Hardening Status
 
-This is the v2 submission-hardened version. The added hidden-task stress shows
-the deployment boundary: when each gripper's task is changed to require one
-attribute outside its observation channel, ICIP action success drops from
-100.0% to 50.0% for pinch, suction, and enveloping.
+This is the v3 final full-scale version.
+
+The full-scale suite evaluates:
+
+- 373,248 latent object states.
+- 7 manipulation interfaces.
+- 6 regimes.
+- 10 identity/control strategies.
+- 156,764,160 main state-method decisions.
+- 646,829,820 exact learned pair/action distribution cases.
+
+Key results:
+
+- Baseline visible tasks: oracle ICIP and learned ICIP reach 100.0% action success.
+- Common gripper-agnostic labels reach 3.2% action success in the baseline visible regime.
+- Hidden-pair tasks: naive/oracle ICIP drops to 10.7% action success.
+- Active ICIP recovers 100.0% action success in hidden-pair tasks with 0.88 utility.
+- Global ID reaches 100.0% only in the global-observable control, where the observability premise is changed.
+
+The paper still does not claim real robot validation or real-world prevalence. It is submission-ready as a formal/synthetic mechanism paper with explicit boundaries.
 
 ## Reproduce Evidence
 
@@ -21,19 +37,21 @@ From the repository root:
 
 ```powershell
 python experiments/run_icip_experiment.py
+python experiments/full_scale_icip_experiment.py
 ```
 
-This regenerates:
+The legacy v2 script regenerates the 96-object audit tables. The v3 full-scale script regenerates:
 
-- `results/experiment_metrics.csv`
-- `results/partition_relations.csv`
-- `results/hidden_task_stress.csv`
-- `results/experiment_summary.json`
-- `paper/tables/experiment_metrics.tex`
-- `paper/tables/partition_relations.tex`
-- `paper/tables/hidden_task_stress.tex`
+- `results/full_scale/main_performance.csv`
+- `results/full_scale/learned_partition_recovery.csv`
+- `results/full_scale/non_nesting_prevalence.csv`
+- `results/full_scale/sensor_cost_phase_diagram.csv`
+- `results/full_scale/cross_interface_transfer.csv`
+- `results/full_scale/experiment_summary.json`
+- `paper/tables/full_scale_*.tex`
+- `figures/full_scale/*.pdf`
 
-The experiment uses only the Python standard library.
+Both experiment scripts use only the Python standard library.
 
 ## Rebuild Literature Artifacts
 
@@ -42,7 +60,7 @@ python scripts/literature_sweep.py
 python scripts/synthesize_docs.py
 ```
 
-The current run used Crossref because OpenAlex and Semantic Scholar returned HTTP 429 from this environment. The generated literature artifacts are checked in under `docs/` and `data/`.
+The current literature run used Crossref because OpenAlex and Semantic Scholar returned HTTP 429 from this environment. The generated literature artifacts are checked in under `docs/` and `data/`.
 
 ## Build Paper
 
@@ -50,11 +68,11 @@ The current run used Crossref because OpenAlex and Semantic Scholar returned HTT
 powershell -ExecutionPolicy Bypass -File scripts/build_pdf.ps1
 ```
 
-The build script copies the final PDF to Downloads and removes the transient
-local `paper/main.pdf`.
+The build script copies the final PDF to Downloads and removes transient local `paper/main.pdf`.
 
 ## Final PDF
 
-The compiled submission PDF for the batch is:
-
-`C:/Users/wangz/Downloads/29.pdf`
+- Canonical PDF: `C:/Users/wangz/Downloads/29.pdf`
+- Pages: 25
+- Size: 325,610 bytes
+- SHA256: `E1BEFA43E4001EDAAE047DC5BAE248092A0DE758B538F23FDA91CE9FB4894BB9`
