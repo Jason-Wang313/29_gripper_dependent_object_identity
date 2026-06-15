@@ -1,0 +1,54 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 430 260] /Resources << /Font << /F1 4 0 R >> >> /Contents 5 0 R >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+5 0 obj
+<< /Length 1135 >>
+stream
+BT /F1 12 Tf 28.0 238.0 Td (Learned ICIP recovery improves with probes) Tj ET
+0.15 0.15 0.15 RG 0.8 w 45.0 42.0 m 385.0 42.0 l S
+0.15 0.15 0.15 RG 0.8 w 45.0 42.0 m 45.0 218.0 l S
+0.200 0.480 0.750 rg 42.0 154.8 6.0 6.0 re f
+BT /F1 8 Tf 38.0 26.0 Td (1) Tj ET
+0.200 0.480 0.750 rg 97.0 196.0 6.0 6.0 re f
+BT /F1 8 Tf 93.0 26.0 Td (2) Tj ET
+0.15 0.15 0.15 RG 0.8 w 45.0 157.8 m 100.0 199.0 l S
+0.200 0.480 0.750 rg 152.0 197.7 6.0 6.0 re f
+BT /F1 8 Tf 148.0 26.0 Td (4) Tj ET
+0.15 0.15 0.15 RG 0.8 w 100.0 199.0 m 155.0 200.7 l S
+0.200 0.480 0.750 rg 207.0 199.0 6.0 6.0 re f
+BT /F1 8 Tf 203.0 26.0 Td (8) Tj ET
+0.15 0.15 0.15 RG 0.8 w 155.0 200.7 m 210.0 202.0 l S
+0.200 0.480 0.750 rg 262.0 199.0 6.0 6.0 re f
+BT /F1 8 Tf 258.0 26.0 Td (16) Tj ET
+0.15 0.15 0.15 RG 0.8 w 210.0 202.0 m 265.0 202.0 l S
+0.200 0.480 0.750 rg 317.0 199.0 6.0 6.0 re f
+BT /F1 8 Tf 313.0 26.0 Td (32) Tj ET
+0.15 0.15 0.15 RG 0.8 w 265.0 202.0 m 320.0 202.0 l S
+0.200 0.480 0.750 rg 372.0 199.0 6.0 6.0 re f
+BT /F1 8 Tf 368.0 26.0 Td (64) Tj ET
+0.15 0.15 0.15 RG 0.8 w 320.0 202.0 m 375.0 202.0 l S
+BT /F1 8 Tf 178.0 12.0 Td (training probes per state) Tj ET
+endstream
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000241 00000 n 
+0000000311 00000 n 
+trailer << /Size 6 /Root 1 0 R >>
+startxref
+1498
+%%EOF

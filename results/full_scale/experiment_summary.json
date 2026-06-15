@@ -1,0 +1,55 @@
+{
+  "version": "v3 final full-scale",
+  "latent_states": 373248,
+  "interfaces": [
+    "pinch",
+    "suction",
+    "enveloping",
+    "spatula",
+    "magnetic",
+    "needle",
+    "clamp"
+  ],
+  "regimes": [
+    "aligned_control",
+    "baseline_visible",
+    "hidden_single",
+    "hidden_pair",
+    "irrelevant_hidden_control",
+    "global_observable_control"
+  ],
+  "methods": [
+    "global_id",
+    "common_label",
+    "oracle_icip",
+    "learned_icip",
+    "universal_refinement",
+    "universal_coarsening",
+    "multimodal_fusion",
+    "interface_router",
+    "active_icip",
+    "abstaining_icip"
+  ],
+  "main_state_method_decisions": 156764160,
+  "learned_pair_action_cases": 646829820,
+  "non_nesting_worlds": 19200,
+  "phase_cells": 49,
+  "key_results": {
+    "baseline_oracle_icip_success": 1.0,
+    "baseline_learned_icip_success": 1.0,
+    "baseline_common_label_success": 0.03207671957671958,
+    "hidden_pair_oracle_icip_success": 0.10714285714285714,
+    "hidden_pair_active_icip_success": 1.0,
+    "hidden_pair_active_icip_utility": 0.88,
+    "global_observable_global_id_success": 1.0
+  },
+  "artifact_paths": {
+    "main_performance_csv": "C:\\Users\\wangz\\robotics_60_paper_batch\\29_gripper_dependent_object_identity\\results\\full_scale\\main_performance.csv",
+    "learned_partition_csv": "C:\\Users\\wangz\\robotics_60_paper_batch\\29_gripper_dependent_object_identity\\results\\full_scale\\learned_partition_recovery.csv",
+    "non_nesting_csv": "C:\\Users\\wangz\\robotics_60_paper_batch\\29_gripper_dependent_object_identity\\results\\full_scale\\non_nesting_prevalence.csv",
+    "phase_csv": "C:\\Users\\wangz\\robotics_60_paper_batch\\29_gripper_dependent_object_identity\\results\\full_scale\\sensor_cost_phase_diagram.csv",
+    "transfer_csv": "C:\\Users\\wangz\\robotics_60_paper_batch\\29_gripper_dependent_object_identity\\results\\full_scale\\cross_interface_transfer.csv",
+    "figures": "C:\\Users\\wangz\\robotics_60_paper_batch\\29_gripper_dependent_object_identity\\figures\\full_scale",
+    "tables": "C:\\Users\\wangz\\robotics_60_paper_batch\\29_gripper_dependent_object_identity\\paper\\tables"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "version": "v3 final full-scale",
+  "downloads_pdf": "C:/Users/wangz/Downloads/29.pdf",
+  "pages": 25,
+  "bytes": 325610,
+  "sha256": "E1BEFA43E4001EDAAE047DC5BAE248092A0DE758B538F23FDA91CE9FB4894BB9",
+  "latent_states": 373248,
+  "interfaces": 7,
+  "regimes": 6,
+  "methods": 10,
+  "main_state_method_decisions": 156764160,
+  "learned_pair_action_cases": 646829820,
+  "local_paper_pdf_absent": true,
+  "build_status": "complete",
+  "log_scan_clean": true
+}

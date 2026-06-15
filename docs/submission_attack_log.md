@@ -1,15 +1,23 @@
 # Submission Attack Log
 
-Updated: 2026-06-13
+Updated: 2026-06-15
 
 ## Attack Rounds
 
 1. Closest-prior attack: tactile recognition, active perception, gripper design, affordance learning, and object-centric representation already cover much of the neighborhood. Response: keep novelty to identity as an observable-and-sufficient interface-conditioned quotient.
 2. Formality attack: the theorem is a finite partition statement. Response: state it as a narrow abstraction result, not a real-world prevalence proof.
-3. Evidence attack: the toy world is hand-specified and favorable to ICIP. Response: keep paper readiness workshop-only and add a negative stress.
-4. Missing-sensing attack: ICIP cannot recover a task-critical attribute the gripper cannot observe. Response: add v2 hidden-task stress.
-5. Artifact attack: v1 kept `paper/main.pdf` locally and recorded stale Desktop-copy status. Response: add a build script that copies only to Downloads and removes the local PDF.
+3. Evidence attack: the v2 toy world is hand-specified and favorable to ICIP. Response: add v3 full-scale synthetic suite with 373,248 states, 7 interfaces, 6 regimes, 10 strategies, learned partitions, transfer, phase diagrams, and negative controls.
+4. Missing-sensing attack: ICIP cannot recover a task-critical attribute the gripper cannot observe. Response: add hidden single/pair regimes; hidden-pair tasks reduce naive/oracle ICIP to 10.7% action success.
+5. Active-policy attack: v2 had no response to empty observability/sufficiency intervals. Response: add active ICIP, interface routing, multimodal fusion, and abstaining ICIP.
+6. Universal-label attack: a universal latent state can contain everything. Response: separately report observability and sufficiency; add global-observable control where global ID is valid.
+7. Artifact attack: final PDF must be Downloads-only and 25+ pages. Response: build script exports `C:/Users/wangz/Downloads/29.pdf`, removes `paper/main.pdf`, and final PDF is 25 pages.
 
-## V2 Outcome
+## V3 Outcome
 
-The paper remains workshop-only / strong-revise. The v2 stress shows that ICIP is not magic sensing: when each interface's task needs one hidden attribute, ICIP action success drops from 100.0% to 50.0%.
+The paper is now submission-ready as a formal/synthetic mechanism paper. It remains explicitly not a real-robot benchmark and does not claim real-world prevalence.
+
+Final PDF:
+
+- Path: `C:/Users/wangz/Downloads/29.pdf`
+- Pages: 25
+- SHA256: `E1BEFA43E4001EDAAE047DC5BAE248092A0DE758B538F23FDA91CE9FB4894BB9`
