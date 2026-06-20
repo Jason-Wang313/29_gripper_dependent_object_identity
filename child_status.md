@@ -8,7 +8,8 @@ Current facts:
 - Canonical PDF: `C:/Users/wangz/Downloads/29.pdf`.
 - PDF pages: 25.
 - PDF size: 325,610 bytes.
-- PDF SHA256: `E1BEFA43E4001EDAAE047DC5BAE248092A0DE758B538F23FDA91CE9FB4894BB9`.
+- PDF SHA256: `9E9B16A8A9D82BC4F6ED1CFF6802454218EB9AEC44CC0158E2EBBBF46E38726D`.
+- Latest visual hardening: VLA-style one-point green citation boxes and red internal link boxes verified on pages 2, 3, and 6; no cyan boxes.
 - Local `paper/main.pdf` is absent after final export.
 - Build status: `data/build_status.json` reports `complete`, copied `true`, removed local PDF `true`.
 - Final build log scan found no overfull boxes, unresolved refs/cites, fatal errors, or undefined references.

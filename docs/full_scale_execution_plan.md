@@ -199,3 +199,8 @@ After experiments and manuscript finalization:
 - Docs/logs/reproducibility files match the final results.
 - Git worktree is clean after commit.
 - Commit is pushed and local `HEAD` equals upstream.
+On 2026-06-20, the final PDF was rebuilt with the VLA role-model hyperref box
+policy. The rebuilt artifact has SHA256
+`9E9B16A8A9D82BC4F6ED1CFF6802454218EB9AEC44CC0158E2EBBBF46E38726D` and
+VLA-style one-point green citation boxes plus red internal link boxes on pages
+2, 3, and 6.

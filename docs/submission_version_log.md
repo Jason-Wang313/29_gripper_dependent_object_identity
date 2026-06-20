@@ -10,7 +10,14 @@
 - Rewrote `paper/main.tex` into a 25-page v3 final full-scale manuscript.
 - Added learned partition estimation, non-nesting prevalence, hidden single/pair stress, active sensing, abstention, multimodal fusion, interface routing, transfer, negative controls, and appendices.
 - Final canonical PDF exported to `C:/Users/wangz/Downloads/29.pdf`.
-- Final PDF SHA256: `E1BEFA43E4001EDAAE047DC5BAE248092A0DE758B538F23FDA91CE9FB4894BB9`.
+- Verified the v3 final PDF hash before the later visual-hardening rebuild.
+
+## v4 Visual Hardening - 2026-06-20
+
+- Added the VLA role-model `hyperref` box policy to `paper/main.tex`.
+- Rebuilt the canonical Downloads PDF.
+- Verified 25 pages, size 325,610 bytes, SHA256 `9E9B16A8A9D82BC4F6ED1CFF6802454218EB9AEC44CC0158E2EBBBF46E38726D`, and no local `paper/main.pdf`.
+- Verified one-point green citation boxes on pages 2 and 3; red internal link boxes on pages 3 and 6; and no cyan boxes.
 
 ## v2 - 2026-06-13
 

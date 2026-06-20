@@ -26,6 +26,14 @@ python experiments\full_scale_icip_experiment.py
 - `cross_interface_transfer.csv`: source-target transfer matrix source data.
 - `experiment_summary.json`: compact scale and key result summary.
 
+## Final PDF Validation
+
+- PDF: `C:/Users/wangz/Downloads/29.pdf`
+- Pages: 25
+- Size: 325,610 bytes
+- SHA256: `9E9B16A8A9D82BC4F6ED1CFF6802454218EB9AEC44CC0158E2EBBBF46E38726D`
+- Visual render checked: true, including VLA-style one-point green citation boxes, red internal link boxes, and no cyan boxes
+
 ## Key Results
 
 - Baseline oracle ICIP success: 100.0%.

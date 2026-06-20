@@ -36,7 +36,7 @@
 14. Final PDF verification:
    - Pages: 25.
    - Size: 325,610 bytes.
-   - SHA256: `E1BEFA43E4001EDAAE047DC5BAE248092A0DE758B538F23FDA91CE9FB4894BB9`.
+   - SHA256: `9E9B16A8A9D82BC4F6ED1CFF6802454218EB9AEC44CC0158E2EBBBF46E38726D`.
    - Text markers verified: `v3 final full-scale`, `373,248`, `156,764,160`, `active ICIP`, `Interface-Conditioned Identity`.
 
 15. Build status: `data/build_status.json` reports complete; all LaTeX/BibTeX steps exit code 0; copied flag true; removed local PDF true.
@@ -44,6 +44,7 @@
 16. Local repo PDF copy: absent after final export, as required.
 
 17. GitHub URL: `https://github.com/Jason-Wang313/29_gripper_dependent_object_identity`.
+18. VLA-style visual check: link pages 2, 3, and 6 were rendered with `pdftoppm` and inspected; one-point green citation boxes and red internal reference boxes are crisp, aligned, and no cyan boxes appear.
 
 Additional audit notes:
 
