@@ -75,4 +75,5 @@ The build script copies the final PDF to Downloads and removes transient local `
 - Canonical PDF: `C:/Users/wangz/Downloads/29.pdf`
 - Pages: 25
 - Size: 325,610 bytes
-- SHA256: `E1BEFA43E4001EDAAE047DC5BAE248092A0DE758B538F23FDA91CE9FB4894BB9`
+- SHA256: `9E9B16A8A9D82BC4F6ED1CFF6802454218EB9AEC44CC0158E2EBBBF46E38726D`
+- Visual hardening: VLA-style one-point green citation boxes and red internal link boxes verified on pages 2, 3, and 6, with no cyan boxes.

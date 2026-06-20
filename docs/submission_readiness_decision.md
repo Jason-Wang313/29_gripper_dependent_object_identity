@@ -11,6 +11,7 @@ Decision: submission-ready as a formal/synthetic mechanism paper.
 - The suite includes learned partition recovery, non-nesting prevalence, cross-interface transfer, active sensing, abstention, multimodal fusion, interface routing, hidden-task stresses, and negative controls.
 - The paper includes explicit failure cases and does not claim ICIP recovers hidden variables without sensing.
 - The final PDF is verified at 25 pages and exported only to Downloads.
+- The delivered PDF was rendered and visually inspected, including VLA-style green citation boxes and red internal link boxes on pages 2, 3, and 6.
 
 ## Remaining Boundary
 

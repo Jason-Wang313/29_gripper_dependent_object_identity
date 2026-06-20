@@ -10,9 +10,10 @@
 - [x] Paper source is `paper/main.tex`.
 - [x] Canonical PDF path is `C:/Users/wangz/Downloads/29.pdf`.
 - [x] Canonical PDF has 25 pages.
-- [x] Canonical PDF SHA256 is `E1BEFA43E4001EDAAE047DC5BAE248092A0DE758B538F23FDA91CE9FB4894BB9`.
+- [x] Canonical PDF SHA256 is `9E9B16A8A9D82BC4F6ED1CFF6802454218EB9AEC44CC0158E2EBBBF46E38726D`.
 - [x] Local `paper/main.pdf` is removed after canonical copy.
 - [x] Final build log scan is clean for overfull boxes, unresolved refs/cites, undefined references, and fatal errors.
+- [x] VLA-style link-box policy is configured in `paper/main.tex`; final PDF has one-point green citation boxes, red internal reference boxes, and no cyan boxes.
 
 Recommended verification commands:
 

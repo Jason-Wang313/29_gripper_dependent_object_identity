@@ -3,7 +3,7 @@
   "downloads_pdf": "C:/Users/wangz/Downloads/29.pdf",
   "pages": 25,
   "bytes": 325610,
-  "sha256": "E1BEFA43E4001EDAAE047DC5BAE248092A0DE758B538F23FDA91CE9FB4894BB9",
+  "sha256": "9E9B16A8A9D82BC4F6ED1CFF6802454218EB9AEC44CC0158E2EBBBF46E38726D",
   "latent_states": 373248,
   "interfaces": 7,
   "regimes": 6,
@@ -12,5 +12,16 @@
   "learned_pair_action_cases": 646829820,
   "local_paper_pdf_absent": true,
   "build_status": "complete",
-  "log_scan_clean": true
+  "log_scan_clean": true,
+  "vla_link_box_visual_hardening": {
+    "verified": true,
+    "link_pages": [[2, 32], [3, 23], [6, 1]],
+    "colors": {
+      "green": 53,
+      "red": 3,
+      "cyan": 0
+    },
+    "border": [0, 0, 1],
+    "note": "Citation links render green and internal references render red, matching the VLA role-model box policy."
+  }
 }
